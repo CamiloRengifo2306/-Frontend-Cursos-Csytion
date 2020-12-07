@@ -1,17 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
+import fire from '../../../../src/Firebase-config';
 
-const Formulario = () => {
-    return (
-        <div>
-            <Form style={{width:"80%", marginLeft:"10%", marginTop:"10%"}}>
+class Formulario extends Component
+{
+    login() 
+    {
+        const email = document.querySelector('#email').value;
+        const password = document.querySelector('#password').value;
+        fire
+        .auth()
+        .signInWithEmailAndPassword(email,password)
+        .then((u) => {
+            console.log('Successfully Signed Up');
+          })
+          .catch((err) => {
+            console.log('Error: ' + err.toString());
+          })
+      }
+  
+      render()
+  {
+    return(
+      <div>
+        <Form style={{width:"80%", marginLeft:"10%", marginTop:"10%"}}>
                 <Form.Group >
                     <Form.Label>Correo Electronico:</Form.Label>
-                    <Form.Control type="email" placeholder="Ingrese tu correo aquí" />
+                    <Form.Control id="email" type="email" placeholder="Ingrese tu correo aquí" />
                 </Form.Group>
                 <Form.Group >
                     <Form.Label>Contraseña:</Form.Label>
-                    <Form.Control type="password" placeholder="Ingrese tu Contraseña aquí" />
+                    <Form.Control id="password" type="password" placeholder="Ingrese tu Contraseña aquí" />
                 </Form.Group>
                 <Button 
                 style={{
@@ -19,12 +38,17 @@ const Formulario = () => {
                     marginLeft: "auto",
                     marginRight: "auto"}}
                 type="submit"
-                variant="outline-primary">
+                variant="outline-primary"
+                onClick = {this.login}>
                     iniciar Sessión..!
                 </Button>
             </Form>
-        </div>
+
+      </div>
     )
+
+  };
 }
+
 
 export default Formulario;

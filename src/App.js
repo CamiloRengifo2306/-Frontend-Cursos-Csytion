@@ -1,79 +1,52 @@
-import React, {useState, useEffect} from 'react';
+import React, {Component} from 'react';
 import fire from '../src/Firebase-config'
 import Login from './pages/login/login';
-//import Deshboard from './pages/dashboard/dashboard';
+import Deshboard from './pages/dashboard/dashboard';
 
-const App = () => 
+class App extends Component
 {
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-
-  const cleanInputs = () =>
+  constructor(props) 
   {
-    setEmail('');
-    setPassword('');
+    super(props);
+    this.state = 
+    {
+      user: null,
+    };
+   this.authListener = this.authListener.bind(this);
   }
 
-  const cleanErrors = () =>
+  componentDidMount() 
   {
-    setEmailError('');
-    setPasswordError('');
+    this.authListener();
   }
 
-  const handeleLogin = () => 
-  {
-    cleanErrors();
-    fire
-    .auth()
-    .signInWithEmailAndPassword (email, password)
-    .catch(error => 
-      {
-      switch(error.code)
-      {
-        case "Auth/Incalid-Email":
-          setEmailError(error.message);
-        break;
-        case "Auth/Wrong-Password":
-          setPasswordError(error.message);
-        break;
-      }
-     })
-  }
-
-  const userLis = () => 
+  authListener() 
   {
     fire
     .auth()
     .onAuthStateChanged((user) => 
     {
-      if (user)
+      if (user) 
       {
-        cleanInputs();
-        setUser(user);
-      }
-      else
+        this.setState({ user });
+      } 
+      else 
       {
-        setUser("");
+        this.setState({ user: null });
       }
     })
   }
 
-  useEffect(() =>
+  render()
   {
-    userLis();
-  
-  }, []);
-
-  return(
-    <div>
-      <Login/>
+    return(
       
-    </div>
-  );
-};
+      <div className = "App">
+        {this.setState.user ? ( <Deshboard/>) : ( <Login/>)}
+      </div>
+    )
 
+  };
+}
 
 export default App
