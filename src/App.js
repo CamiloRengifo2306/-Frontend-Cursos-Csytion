@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import fire from '../src/Firebase-config'
+import fire from '../src/Firebase-config';
+import 'firebase/auth';
 import Login from './pages/login/login';
 import Deshboard from './pages/dashboard/dashboard';
 
@@ -7,7 +8,7 @@ class App extends Component
 {
   constructor(props) 
   {
-    super(props);
+    super (props)
     this.state = 
     {
       user: null,
@@ -26,6 +27,7 @@ class App extends Component
     .auth()
     .onAuthStateChanged((user) => 
     {
+      console.log(this.state.user);
       if (user) 
       {
         this.setState({ user });
@@ -42,7 +44,7 @@ class App extends Component
     return(
       
       <div className = "App">
-        {this.setState.user ? ( <Deshboard/>) : ( <Login/>)}
+        {this.state.user ? ( <Deshboard/>) : ( <Login fire={fire}/>)}
       </div>
     )
 

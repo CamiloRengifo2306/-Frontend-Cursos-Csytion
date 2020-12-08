@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
-import fire from '../../../../src/Firebase-config';
+import 'firebase/auth';
 
 class Formulario extends Component
 {
+  constructor(props) 
+  {
+    super (props)
+  }
+
     login() 
     {
         const email = document.querySelector('#email').value;
         const password = document.querySelector('#password').value;
-        fire
+        this.props.fire
         .auth()
         .signInWithEmailAndPassword(email,password)
         .then((u) => {
@@ -23,10 +28,11 @@ class Formulario extends Component
   {
     return(
       <div>
-        <Form style={{width:"80%", marginLeft:"10%", marginTop:"10%"}}>
+        <Form  style={{width:"80%", marginLeft:"10%", marginTop:"10%"}}>
                 <Form.Group >
                     <Form.Label>Correo Electronico:</Form.Label>
                     <Form.Control id="email" type="email" placeholder="Ingrese tu correo aquí" />
+                    
                 </Form.Group>
                 <Form.Group >
                     <Form.Label>Contraseña:</Form.Label>
@@ -37,9 +43,9 @@ class Formulario extends Component
                     display: "block", 
                     marginLeft: "auto",
                     marginRight: "auto"}}
-                type="submit"
+                type="button"
                 variant="outline-primary"
-                onClick = {this.login}>
+                onClick = {()=> this.login()}>
                     iniciar Sessión..!
                 </Button>
             </Form>

@@ -8,6 +8,14 @@ import Imagen from './components/imagen';
 
 class Login extends Component
 {
+  constructor(props) 
+  {
+    super(props);
+    
+    
+  }
+
+
   render()
   {
     return(
@@ -18,7 +26,7 @@ class Login extends Component
               <h1 style={{padding: "5%", textAlign: "center"}}>Bienvenidos </h1>
             <Row className="landing">
                 
-                <Col> <Formulario/>  </Col>
+                <Col> <Formulario fire = {this.props.fire}/>  </Col>
                 
                 <Col> <Imagen/> </Col>
             </Row>
