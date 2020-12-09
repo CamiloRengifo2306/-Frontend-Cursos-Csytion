@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import "bootstrap/dist/css/bootstrap.css";
 import { Row, Col, Container} from 'react-bootstrap';
 import Formulario from './components/formulario';
 import Header from './components/header';

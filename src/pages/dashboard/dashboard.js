@@ -1,26 +1,16 @@
 import React, { Component } from 'react';
-import { Button } from '@material-ui/core';
-import fire from '../../Firebase-config';
+import Navigation from './components/navegation';
 
 class Deshboard extends Component
 {
 
-  cerrar()
-  {
-    fire
-    .auth()
-    .signOut();
-  }
+  
   render()
   {
     return(
       <div>
-        <Button
-         onClick = {this.cerrar}
-         variant="outlined" 
-         color="primary">
-         Cerrar Sesión
-        </Button>
+      <Navigation/>
+      
       </div>
     )
 
