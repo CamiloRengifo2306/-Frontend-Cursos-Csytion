@@ -6,7 +6,7 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="white" >
                 <Navbar.Brand>Nombre APP</Navbar.Brand>
-                        <Nav>
+                        <Nav  className="mr-auto">
                             <Nav.Link href="#">Csytion Technology S.A.S 2021</Nav.Link>
                         </Nav>
                </Navbar>

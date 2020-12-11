@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import Navigation from './components/navegation';
+import Home from '../dashboard/pages/home';
+//import Business from '../dashboard/pages/business/business';
+//import Ofirmatica from '../dashboard/pages/ofirmatica/ofirmatica';
 
-class Deshboard extends Component
-{
 
-  
-  render()
-  {
-    return(
+
+class Deshboard extends Component {
+
+
+  render() {
+    return (
       <div>
-      <Navigation/>
-      
+        <Home/>
+        
+        
+
       </div>
     )
 

@@ -30,6 +30,7 @@ class Login extends Component
                 <Col> <Imagen/> </Col>
             </Row>
            </Container>
+           
 
       </div>
     )

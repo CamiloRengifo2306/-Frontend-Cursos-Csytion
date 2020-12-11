@@ -4,7 +4,7 @@ import {Image} from "react-bootstrap";
 const Imagen = () => {
     return (
         <div>
-           <Image src="./img/10088.jpg" thumbnail style={{border:"none"}} /> 
+           <Image src="./img/6461.jpg" thumbnail style={{border:"none"}} /> 
         </div>
     )
 }
